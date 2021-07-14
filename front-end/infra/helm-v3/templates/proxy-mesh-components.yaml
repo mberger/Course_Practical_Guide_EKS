@@ -1,5 +1,5 @@
 ---
-apiVersion: appmesh.k8s.aws/v1beta2
+apiVersion: appmesh.k8s.aws/v1
 kind: VirtualNode
 metadata:
   name: {{ template "acg-front-end.name" . }}-proxy
@@ -18,7 +18,7 @@ spec:
       hostname: {{ .Values.service.name }}-proxy.{{ .Release.Namespace }}.svc.cluster.local
 
 ---
-apiVersion: appmesh.k8s.aws/v1beta2
+apiVersion: appmesh.k8s.aws/v1
 kind: VirtualService
 metadata:
   name: {{ .Values.service.name }}-proxy
@@ -31,7 +31,7 @@ spec:
         name: {{ template "acg-front-end.name" . }}-proxy-virtual-router
 
 --- 
-apiVersion: appmesh.k8s.aws/v1beta2
+apiVersion: appmesh.k8s.aws/v1
 kind: VirtualRouter
 metadata:
   name: {{ template "acg-front-end.name" . }}-proxy-virtual-router
